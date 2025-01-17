@@ -9,9 +9,15 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool today=true, tomorrow=false, nextweek=false;
+  bool suggest=false;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: (){
+
+      }, child: Icon(Icons.add, color: Color(0xFF0C7BB3),size: 30.0,),),
         body: Container(
       padding: EdgeInsets.only(top: 90.0, left: 30.0),
       height: MediaQuery.of(context).size.height,
@@ -150,7 +156,18 @@ class _HomeState extends State<Home> {
               ),
             ],
           ),
-          
+          SizedBox(
+            height: 20.0,
+          ),
+          CheckboxListTile(
+            activeColor: Color(0xFFF2BAE8),
+            title: Text("Go to the store", style: TextStyle(color: Colors.white, fontSize: 22.0,fontWeight: FontWeight.w400),),
+            value: suggest, onChanged: (newValue){
+            setState(() {
+              suggest=newValue!;
+            });
+          },
+          controlAffinity: ListTileControlAffinity.leading,)
         ],
       ),
     ));
